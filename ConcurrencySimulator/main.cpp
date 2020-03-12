@@ -1,9 +1,10 @@
+#include <iostream>
 #include "ConcurrencySimulator.h"
 
-int main(){
+int main() {
     ConcurrencySimulator CS(1);
-    CS.SetInputFilename("input.txt");
-    CS.SetOutputFilename("output.txt");
-    CS.RunProgram();
+    if (CS.SetInputFile("input.txt")) {
+        CS.RunProgram();
+    }
     return 0;
 }

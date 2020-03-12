@@ -39,6 +39,7 @@
       <compileType>
         <ccTool>
           <standard>8</standard>
+          <commandLine>-DDEBUG</commandLine>
         </ccTool>
       </compileType>
       <item path="ConcurrencySimulator.cpp" ex="false" tool="1" flavor2="0">

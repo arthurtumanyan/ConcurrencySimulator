@@ -5,16 +5,16 @@
 #include <string>
 #include <array>
 #include<vector>
+#include <fstream>
 using namespace std;
 
 #define MAXVARS 26
-#define MAXM 32
 #define MAXN 1024
 
 typedef struct Memory {
-    array<string, MAXM> s;
+    vector<string> statement;
     int counter;
-}MEMORY;
+} MEMORY;
 
 class ConcurrencySimulator {
 public:
@@ -30,19 +30,19 @@ private:
     MEMORY Memory[MAXN];
     string sIFile;
     string sOFile;
+    ifstream hInputHandle;
 
 
 public:
     ConcurrencySimulator(int testcase);
+    bool GetInputParameters();
     void RunProgram();
-    void SetInputFilename(string iFileName);
-    void SetOutputFilename(string oFileName);
+    bool SetInputFile(string iFileName);
+ 
     virtual ~ConcurrencySimulator();
 private:
-    void MemoryRead(int cellNo);
-    void MemoryWrite(int cellNo);
     void ExecuteStatement(int pid);
-    bool ReadStatements();
+    void ReadStatements(int pid);
 };
 
 #endif /* CONCURRENCYSIMULATOR_H */
