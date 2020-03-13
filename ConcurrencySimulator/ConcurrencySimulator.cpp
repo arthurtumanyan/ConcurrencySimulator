@@ -6,6 +6,11 @@
 #include <regex>
 #include "ConcurrencySimulator.h"
 
+/*
+ Purpose: return statements from "memory" as program arguments
+ @param: s (memory entry)
+ @return: vector<string> (program argument)
+ */
 vector<string> decode(string s) {
     vector<string> ret;
     stringstream sin(s);
@@ -15,6 +20,11 @@ vector<string> decode(string s) {
     return ret;
 }
 
+/*
+ Purpose: class constructor, assigning default values for some class members
+ @param: testcase (defines how many times simulation will occur)
+ @return:
+ */
 ConcurrencySimulator::ConcurrencySimulator(int testcase) {
     nTestCase = testcase;
     nProgramCount = 0;
@@ -25,6 +35,11 @@ ConcurrencySimulator::ConcurrencySimulator(int testcase) {
     sIFile.clear();
 }
 
+/*
+ Purpose: read first line from input file, split and extract input parameters for program
+ @param:
+ @return: boolean (defines whether operation succeed)
+ */
 bool ConcurrencySimulator::GetInputParameters() {
     string sParams;
     vector<string> tokens;
@@ -61,6 +76,12 @@ bool ConcurrencySimulator::GetInputParameters() {
     return true;
 }
 
+/*
+ Purpose: run programs according to statements defined in "memory"
+ @param:
+ @return: 
+ */
+
 void ConcurrencySimulator::RunProgram() {
     int i = 0;
     int nPid = 0;
@@ -95,6 +116,11 @@ void ConcurrencySimulator::RunProgram() {
 #endif
 }
 
+/*
+ Purpose: read statements for each program identified by pid and save them in "memory" 
+ @param: pid (program identificator)
+ @return: 
+ */
 void ConcurrencySimulator::ReadStatements(int pid) {
     string line;
 
@@ -108,6 +134,11 @@ void ConcurrencySimulator::ReadStatements(int pid) {
     }
 }
 
+/*
+ Purpose: execute statements for program identified by pid, print results
+ @param: pid (program identificator)
+ @return: 
+ */
 void ConcurrencySimulator::ExecuteStatement(int pid) {
     int q = nQuantum;
     while (q > 0) {
@@ -140,6 +171,11 @@ void ConcurrencySimulator::ExecuteStatement(int pid) {
     readyQ.push_back(pid);
 }
 
+/*
+ Purpose: set input file name and handle
+ @param: iFileName
+ @return: boolean (defines whether operation succeed)
+ */
 bool ConcurrencySimulator::SetInputFile(string iFileName) {
     sIFile = iFileName;
     hInputHandle.open(sIFile.c_str());
@@ -150,6 +186,11 @@ bool ConcurrencySimulator::SetInputFile(string iFileName) {
     return true;
 }
 
+/*
+ Purpose: class destructor, closing input file handle
+ @param:
+ @return:
+ */
 ConcurrencySimulator::~ConcurrencySimulator() {
     if (hInputHandle) {
         hInputHandle.close();

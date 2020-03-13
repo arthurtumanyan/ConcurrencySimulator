@@ -35,7 +35,6 @@ private:
 
 public:
     ConcurrencySimulator(int testcase);
-    bool GetInputParameters();
     void RunProgram();
     bool SetInputFile(string iFileName);
  
@@ -43,6 +42,7 @@ public:
 private:
     void ExecuteStatement(int pid);
     void ReadStatements(int pid);
+    bool GetInputParameters();
 };
 
 #endif /* CONCURRENCYSIMULATOR_H */
