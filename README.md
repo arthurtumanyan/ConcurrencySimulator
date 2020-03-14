@@ -5,6 +5,7 @@ Build instructions:
 In any linux environment execute the following commands:
 
 git clone https://github.com/arthurtumanyan/ConcurrencySimulator.git
+
 cd ConcurrencySimulator
 make
 
